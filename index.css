@@ -374,11 +374,22 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
   transition: transform 12s ease-out;
   transform: scale(1.05);
   z-index: 1;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero:hover .hero-bg {
@@ -743,6 +754,13 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   overflow: hidden;
   position: relative;
+}
+
+.tarjeta-proyecto picture,
+.tarjeta-proyecto img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .tarjeta-proyecto img {

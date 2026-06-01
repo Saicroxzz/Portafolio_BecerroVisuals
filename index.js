@@ -181,13 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!card) return;
 
     const img = card.querySelector('img');
+    const imageSrc = img.currentSrc || img.src;
     const tag = card.querySelector('.tarjeta-tag').textContent;
     const title = card.querySelector('.tarjeta-title').textContent;
     const desc = card.querySelector('.tarjeta-desc').textContent;
 
     // Transición de opacidad interna para suavizar el cambio de imagen
     lightboxImg.style.opacity = '0';
-    lightboxImg.src = img.src;
+    lightboxImg.src = imageSrc;
     lightboxImg.alt = img.alt;
     
     lightboxTag.textContent = tag;
@@ -196,12 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Actualizar botones de descarga y vista completa
     if (lightboxOpenBtn) {
-      lightboxOpenBtn.href = img.src;
+      lightboxOpenBtn.href = imageSrc;
     }
     if (lightboxDownloadBtn) {
-      lightboxDownloadBtn.href = img.src;
+      lightboxDownloadBtn.href = imageSrc;
       // Nombre del archivo para descargar (extraemos el basename del path)
-      const filename = img.src.split('/').pop() || 'becerro-visuals.webp';
+      const filename = imageSrc.split('/').pop() || 'becerro-visuals.webp';
       lightboxDownloadBtn.setAttribute('download', filename);
     }
 

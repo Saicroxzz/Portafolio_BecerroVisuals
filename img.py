@@ -56,7 +56,8 @@ def convertir_jpg_a_webp():
                 
                 # Convertir a RGB (por seguridad con algunos JPGs antiguos) y guardar sin pérdida
                 img_rgb = img.convert("RGB")
-                img_rgb.save(ruta_guardado, "WEBP", lossless=True, quality=100)
+                img_rgb.thumbnail((1800, 1800), Image.Resampling.LANCZOS)
+                img_rgb.save(ruta_guardado, "WEBP", quality=78, method=6)
                 
                 print(f" -> Convertida: {ruta_img.name} => {nuevo_nombre}")
                 contador += 1
