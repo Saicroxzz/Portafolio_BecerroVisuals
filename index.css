@@ -1133,6 +1133,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767px) {
+  .reveal-up, .reveal-left, .reveal-right, .reveal-zoom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .tarjeta-proyecto {
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: none;
+    transform: none !important;
+  }
+
+  .tarjeta-proyecto:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .tarjeta-media {
+    background-color: #000;
+  }
+
+  .tarjeta-proyecto picture,
+  .tarjeta-proyecto img {
+    transform: none !important;
+  }
+
+  .tarjeta-proyecto img {
+    object-fit: cover;
+  }
+
+  .tarjeta-overlay {
+    opacity: 0;
+    transition: none;
+  }
+
+  .tarjeta-proyecto:hover .tarjeta-overlay {
+    opacity: 0;
+  }
+
+  .tarjeta-tag,
+  .tarjeta-title,
+  .tarjeta-desc,
+  .tarjeta-action {
+    transform: none;
+    transition: none;
+  }
+
   .contacto-cta-wrapper {
     justify-content: center;
     padding: 32px 20px;

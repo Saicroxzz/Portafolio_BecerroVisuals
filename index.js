@@ -33,28 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
       revealObserver.observe(element);
     });
   } else {
-    // En móvil o sin IntersectionObserver, el reveal entra una sola vez y no se desmonta.
-    const mobileRevealObserver = 'IntersectionObserver' in window
-      ? new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('activo');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          root: null,
-          rootMargin: '0px 0px -8% 0px',
-          threshold: 0.15
-        })
-      : null;
-
+    // En móvil el contenido queda visible sin animación para evitar parpadeos por viewport dinámico.
     revealElements.forEach(element => {
-      if (mobileRevealObserver) {
-        mobileRevealObserver.observe(element);
-      } else {
-        element.classList.add('activo');
-      }
+      element.classList.add('activo');
     });
   }
 
