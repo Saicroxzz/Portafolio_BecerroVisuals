@@ -1133,6 +1133,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767px) {
+  .hero-location-side {
+    top: 88px;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+    width: 100%;
+    gap: 2px;
+  }
+
+  .hero-location-city {
+    font-size: 1.15rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hero-location-dept {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+  }
+
   .reveal-up, .reveal-left, .reveal-right, .reveal-zoom {
     opacity: 1;
     transform: none;
