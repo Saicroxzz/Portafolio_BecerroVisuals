@@ -1525,6 +1525,27 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ajustes Responsive Lightbox */
 @media (max-width: 767px) {
+  .reveal-up, .reveal-left, .reveal-right, .reveal-zoom {
+    opacity: 0;
+    transform: none;
+    transition: opacity 0.35s ease;
+    will-change: opacity;
+  }
+
+  .reveal-up.activo,
+  .reveal-left.activo,
+  .reveal-right.activo,
+  .reveal-zoom.activo {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-up:nth-child(2), .reveal-left:nth-child(2), .reveal-right:nth-child(2), .reveal-zoom:nth-child(2),
+  .reveal-up:nth-child(3), .reveal-left:nth-child(3), .reveal-right:nth-child(3), .reveal-zoom:nth-child(3),
+  .reveal-up:nth-child(4), .reveal-left:nth-child(4), .reveal-right:nth-child(4), .reveal-zoom:nth-child(4) {
+    transition-delay: 0s;
+  }
+
   .lightbox-prev, .lightbox-next {
     top: auto;
     bottom: 20px;

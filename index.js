@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. CARGA INICIAL Y REVEAL ON SCROLL DINÁMICO (BIDIRECCIONAL)
   // ==========================================================================
   const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-zoom');
+  const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
   
-  if ('IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window && !isMobileViewport) {
     const observerOptions = {
       root: null,
       rootMargin: '-8% 0px -8% 0px', // Activa la entrada/salida ligeramente dentro del viewport
@@ -32,9 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
       revealObserver.observe(element);
     });
   } else {
-    // Fallback para navegadores antiguos
+    // En móvil o sin IntersectionObserver, el reveal entra una sola vez y no se desmonta.
+    const mobileRevealObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('activo');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px 0px -8% 0px',
+          threshold: 0.15
+        })
+      : null;
+
     revealElements.forEach(element => {
-      element.classList.add('activo');
+      if (mobileRevealObserver) {
+        mobileRevealObserver.observe(element);
+      } else {
+        element.classList.add('activo');
+      }
     });
   }
 
